@@ -314,7 +314,7 @@
 
 							}
 						});
-						$( "#sortable" ).disableSelection();
+						// $( "#sortable" ).disableSelection();
 					}
 				}
 
@@ -1099,7 +1099,7 @@
 						span.attr("title",title);
 					}
 
-					last.disableSelection();
+					// last.disableSelection();
 				}
 				last.addClass("jstree-table-cell-last"+(tr?" ui-state-default":""));
 				// if there is no width given for the last column, do it via automatic
