@@ -1057,7 +1057,7 @@
                     }
 
 					
-					if (content.indexOf('%')!=-1)
+					if ((typeof content === 'string' || content instanceof String) && content.indexOf('%')!=-1)
 					{
 						span.attr('style','background-color: '+color+';border: 1px solid black;');
 					}
