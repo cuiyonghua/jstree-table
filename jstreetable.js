@@ -1062,7 +1062,7 @@
 						span.attr('style','background-color: '+color+';border: 1px solid black;');
 					}
                     
-                    if  (content.indexOf('https://hk-webapp1')!=-1)
+                    if  ((content.indexOf('https://hk-webapp1')||content.indexOf('http://nvtegra'))!=-1)
                     {
                         span.attr('href',content);
                         span.attr('target','_bank');
@@ -1070,7 +1070,7 @@
 
 					// create a span inside the div, so we can control what happens in the whole div versus inside just the text/background
                     //console.log(content,'@@@##~~~~');
-                    if (content.indexOf('https://hk-webapp1')!=-1)
+                    if ((content.indexOf('https://hk-webapp1')||content.indexOf('http://nvtegra'))!=-1)
                     {
                         span.addClass(cl+" "+valClass).html('urg report')
                     }
