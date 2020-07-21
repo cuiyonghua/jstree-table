@@ -914,7 +914,9 @@
 					dataCell.addClass(ccl);
 
 					// get the contents of the cell
-					var val = "";
+                    var val = "";
+                    var goal = 90;
+                    var goalLimit = 40;
 					if (objData.data && objData.data[col.value] !== undefined) {
 						val = objData.data[col.value];
 					}
@@ -923,6 +925,17 @@
 					if (typeof(col.format) === "function") {
 						val = col.format(val);
                         //console.log(val);
+                        let goalValueData = [];
+                        try {
+                            goalValueData = val.split('+');
+                            if(goalValueData.length === 3){
+                                val = goalValueData[0];
+                                goal = goalValueData[1];
+                                goalLimit = goalValueData[2];
+                            }
+                        } catch {
+
+                        }
 					}
                     //console.log(val,'@@');
 					// put images instead of text if needed
@@ -1038,12 +1051,13 @@
 				    
                     contentNumber = parseInt(content)
 
-					if (contentNumber < 60) {
-					  color = "lightcoral";
-					} else if (contentNumber < 90) {
-					  color = "yellow";
+                    const colorSchema = this.settings.colorGoal;
+					if (contentNumber < goalLimit) {
+					  color = colorSchema && colorSchema.ltGoalLimitColor; //"lightcoral"
+					} else if (contentNumber < goal) {
+					  color = colorSchema && colorSchema.otherColor; //"yellow"
 					} else {
-					  color = "lawngreen";
+					  color = colorSchema && colorSchema.geGoalColor; //"lawngreen"
 					}
 
 					if (content == '-200.00%')
