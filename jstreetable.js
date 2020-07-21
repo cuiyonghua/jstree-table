@@ -925,7 +925,7 @@
 					if (typeof(col.format) === "function") {
 						val = col.format(val);
                         //console.log(val);
-                        let goalValueData = [];
+                        var goalValueData = [];
                         try {
                             goalValueData = val.split('+');
                             if(goalValueData.length === 3){
@@ -933,8 +933,8 @@
                                 goal = goalValueData[1];
                                 goalLimit = goalValueData[2];
                             }
-                        } catch {
-
+                        } catch(e) {
+							console.log(e);
                         }
 					}
                     //console.log(val,'@@');
@@ -1051,7 +1051,7 @@
 				    
                     contentNumber = parseInt(content)
 
-                    const colorSchema = this.settings.colorGoal;
+                    var colorSchema = this.settings.colorGoal;
 					if (contentNumber < goalLimit) {
 					  color = colorSchema && colorSchema.ltGoalLimitColor; //"lightcoral"
 					} else if (contentNumber < goal) {
