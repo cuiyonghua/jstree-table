@@ -1097,7 +1097,7 @@
 
                         
 
-                        var yourMessage = content.split(':')[7] + " http://"+ content.split(':')[4]+ "%3A" + content.split(':')[5] +"/#/chipview?role=cr%26project="+ content.split(':')[3] +"%26nodeid="+ content.split(':')[2] +"%26showCurrent=true";
+                        var yourMessage = content.split(':')[7] + " http://"+ content.split(':')[4]+ "%3A" + content.split(':')[5] + content.split(':')[8] +"/#/chipview?role=cr%26project="+ content.split(':')[3] +"%26nodeid="+ content.split(':')[2] +"%26showCurrent=true";
                         var subject = content.split(':')[6];
                         var mail="mailto:"+content.split(':')[1] + "@nvidia.com?subject="+subject+"&body="+yourMessage;
 
