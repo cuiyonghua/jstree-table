@@ -1086,12 +1086,26 @@
                     //console.log(content,'@@@##~~~~');
                     if ((typeof content === 'string' || content instanceof String) && (content.indexOf('https://hk-webapp1')!=-1||content.indexOf('http://nvtegra')!=-1))
                     {
-                        span.addClass(cl+" "+valClass).html('urg report')
+                        span.addClass(cl+" "+valClass).html('urg report');
                     }
                     else
                     {
                         span.addClass(cl+" "+valClass).html(content);
-                    }
+					}
+					
+					if((typeof content === 'string' || content instanceof String) && content.indexOf('mailto:')!=-1) {
+
+                        
+
+                        var yourMessage = content.split(':')[7] + " http://"+ content.split(':')[4]+ "%3A" + content.split(':')[5] +"/#/chipview?role=cr%26project="+ content.split(':')[3] +"%26nodeid="+ content.split(':')[2] +"%26showCurrent=true";
+                        var subject = content.split(':')[6];
+                        var mail="mailto:"+content.split(':')[1] + "@nvidia.com?subject="+subject+"&body="+yourMessage;
+
+                        span.attr('href', mail);
+
+                        span.addClass(cl+" "+valClass).html(content.split(':')[1]);
+
+					}
 
 					last = last.css(conf).addClass("jstree-table-cell jstree-table-cell-regular jstree-table-cell-root-"+rootid+" jstree-table-cell-"+classAdd+" "+wcl+ " " + wideValClass + (tr?" ui-state-default":"")).addClass("jstree-table-col-"+i);
 					// add click handler for clicking inside a table cell
