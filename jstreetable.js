@@ -1049,16 +1049,24 @@
 					// need to make the height of this match the line height of the tree. How?
 					span = last.children("a");
 				    
-                    contentNumber = parseInt(content)
+                    contentNumber = parseInt(content);
 
                     var colorSchema = this.settings.colorGoal;
-					if (contentNumber < goalLimit) {
-					  color = colorSchema && colorSchema.ltGoalLimitColor; //"lightcoral"
-					} else if (contentNumber < goal) {
-					  color = colorSchema && colorSchema.otherColor; //"yellow"
-					} else {
-					  color = colorSchema && colorSchema.geGoalColor; //"lawngreen"
-					}
+                    color = '';
+                    if(content.slice(-1) == '%') {
+                        if (contentNumber < goalLimit) {
+                            color = colorSchema && colorSchema.ltGoalLimitColor; //"lightcoral"
+                          } else if (contentNumber < goal) {
+                            color = colorSchema && colorSchema.otherColor; //"yellow"
+                          } else {
+                            color = colorSchema && colorSchema.geGoalColor; //"lawngreen"
+                          }
+                    }
+					
+
+                    if((typeof content === 'string' || content instanceof String) && content.includes('%') && content.slice(-1) == '%') {
+                        content = parseFloat(content).toFixed(1) + '%'
+                    }
 
 					if (content == '-200.00%')
 					{
@@ -1071,7 +1079,7 @@
                     }
 
 					
-					if ((typeof content === 'string' || content instanceof String) && content.indexOf('%')!=-1)
+					if ((typeof content === 'string' || content instanceof String) && content.indexOf('%')!=-1 && content.slice(-1) == '%')
 					{
 						span.attr('style','background-color: '+color+';border: 1px solid black;');
 					}
