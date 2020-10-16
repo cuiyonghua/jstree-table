@@ -1,9 +1,9 @@
 { 
 	"name": "jstreetable", 
 	"description": "table plugin for jstree",
-	"version": "1.0.11",
-	"url": "https://github.com/adamjimenez/jstree-table",
-	"author": {"name":"Adam Jimenez","url":"https://github.com/adamjimenez"},
+	"version": "1.0.12",
+	"url": "https://github.com/cuiyonghua/jstree-table",
+	"author": {"name":"cuiyonghua","url":"https://github.com/cuiyonghua"},
 	"dependencies": {
     	"jstree":">=3.0.0"
 	},
@@ -15,7 +15,7 @@
 	],
 	"repository": {
 		"type" : "git",
-		"url" : "http://github.com/adamjimenez/jstree-table.git"
+		"url" : "https://github.com/cuiyonghua/jstree-table.git"
 	},
 	"license" : "MIT",
 		"devDependencies": {
