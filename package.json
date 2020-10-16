@@ -1,7 +1,7 @@
 { 
 	"name": "jstreetable", 
 	"description": "table plugin for jstree",
-	"version": "1.0.12",
+	"version": "1.0.13",
 	"url": "https://github.com/cuiyonghua/jstree-table",
 	"author": {"name":"cuiyonghua","url":"https://github.com/cuiyonghua"},
 	"dependencies": {

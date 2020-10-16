@@ -158,7 +158,6 @@
 					arrowUpIcon: 'fa fa-chevron-up',
 					width: s.width,
 					height: s.height,
-					disableCollapse: s.disableCollapse || false,
 				}, cols = gs.columns, treecol = 0;
 				// find which column our tree shuld go in
 				for (i=0;i<s.columns.length;i++) {
@@ -334,8 +333,7 @@
 				}
 			}, this))
 			.on("close_node.jstree",$.proxy(function (e,data) {
-				var gs = this._tableSettings;
-				if(gs.disableCollapse) {
+				if(this.settings.disableCollapse) {
 					data.instance.open_node(data.node);
 				} else {
 					this._hide_table(data.node);
