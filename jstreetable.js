@@ -126,6 +126,10 @@
 		}
 	};
 
+	$.jstree.plugins.noclose = function () {
+        this.close_node = $.noop;
+    };
+
 	$.jstree.defaults.table = {
 		width: 'auto'
 	};
@@ -333,9 +337,7 @@
 				}
 			}, this))
 			.on("close_node.jstree",$.proxy(function (e,data) {
-				if(this.settings.disableCollapse) {
-					data.instance.open_node(data.node);
-				} else {
+				if(!this.settings.disableCollapse) {
 					this._hide_table(data.node);
 				}
 			}, this))
@@ -1057,7 +1059,7 @@
 
                     var colorSchema = this.settings.colorGoal;
                     color = '';
-                    if(content.slice(-1) == '%') {
+                    if(content && (typeof content === 'string' || content instanceof String) &&  (content.slice(-1) == '%')) {
                         if (contentNumber < goalLimit) {
                             color = colorSchema && colorSchema.ltGoalLimitColor; //"lightcoral"
                           } else if (contentNumber < goal) {
@@ -1092,7 +1094,12 @@
                     {
                         span.attr('href',content);
                         span.attr('target','_bank');
-                    }
+					} 
+					else if ((typeof content === 'string' || content instanceof String) && content.indexOf('nvbug:')!=-1) 
+					{
+						span.attr('href', "http://nvbugs/" + content.split(':')[1]);
+                        span.attr('target','_bank');
+					}
 
 					// create a span inside the div, so we can control what happens in the whole div versus inside just the text/background
                     //console.log(content,'@@@##~~~~');
@@ -1100,7 +1107,11 @@
                     {
                         span.addClass(cl+" "+valClass).html('urg report');
                     }
-                    else
+					else if ((typeof content === 'string' || content instanceof String) && content.indexOf('nvbug:')!=-1) 
+					{
+						span.addClass(cl+" "+valClass).html('NVBug');
+					} 
+					else
                     {
                         span.addClass(cl+" "+valClass).html(content);
 					}
