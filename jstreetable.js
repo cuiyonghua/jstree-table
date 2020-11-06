@@ -1109,7 +1109,7 @@
                     }
 					else if ((typeof content === 'string' || content instanceof String) && content.indexOf('nvbug:')!=-1) 
 					{
-						span.addClass(cl+" "+valClass).html('NVBug');
+						span.addClass(cl+" "+valClass).html(content.split(':')[1]);
 					} 
 					else
                     {
